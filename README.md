@@ -5,13 +5,13 @@
 
 ## install k8 without conda:
 # curl -L https://github.com/attractivechaos/k8/releases/download/v0.2.4/k8-0.2.4.tar.bz2 | tar -jxf -
-# cp k8-0.2.4/k8-`uname -s` k8  # or copy it to a directory on your $PATH
+# cp k8-0.2.4/k8-`uname -s` k8         # or copy it to a directory on your $PATH
 
-## install k8 via conda:
-# conda install minimap2        # k8 comes with minimap2
+## install k8 via bioconda:
+# conda install -c bioconda minimap2   # k8 comes with minimap2
 
 k8 calN50.js ctg.fa             # compute auN and N50 from FASTA
-k8 calN50.js ctg.fa.fai         # faidx index (only first two fields are needed)
+./calN50.js ctg.fa.fai          # faidx index (assuming k8 on $PATH)
 calN50.js seq.gfa.gz            # if k8 and calN50.js are on $PATH
 calN50.js -L3.1g seq.lens       # compute auNG and NG50 for a 3.1Gbp genome
 calN50.js -f ref.fa.fai seq.fa  # or get the genome size from a .fai file
