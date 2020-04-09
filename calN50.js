@@ -1,6 +1,6 @@
 #!/usr/bin/env k8
 
-var version = "r0";
+var version = "r3";
 
 var getopt = function(args, ostr) {
 	var oli; // option letter list index
@@ -137,10 +137,10 @@ function main(args) {
 		a.length = j + 1;
 	}
 
-	print("CC\tSZ  total_sequence_length");
-	print("CC\tNN  number_of_sequences");
-	print("CC\tNL  x  Nx  Lx");
-	print("CC\tAU  x  auN");
+	print("CC\tSZ   total_sequence_length");
+	print("CC\tNN   number_of_sequences");
+	print("CC\tNL   x   Nx   Lx");
+	print("CC\tAU   auN");
 	print("CC");
 
 	var sum = 0;
