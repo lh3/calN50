@@ -1,6 +1,6 @@
 #!/usr/bin/env k8
 
-var version = "r3";
+var version = "r4";
 
 var getopt = function(args, ostr) {
 	var oli; // option letter list index
@@ -48,7 +48,7 @@ function parseNum(s) {
 		else if (m[2] == 'm' || m[2] == 'M') x *= 1000000;
 		else if (m[2] == 'g' || m[2] == 'G') x *= 1000000000;
 	}
-	return x;
+	return Math.floor(x + .499);
 }
 
 function main(args) {
@@ -137,6 +137,7 @@ function main(args) {
 		a.length = j + 1;
 	}
 
+	print("CC\tGS   genome_size_if_provided");
 	print("CC\tSZ   total_sequence_length");
 	print("CC\tNN   number_of_sequences");
 	print("CC\tNL   x   Nx   Lx");
@@ -146,6 +147,7 @@ function main(args) {
 	var sum = 0;
 	for (var i = 0; i < a.length; ++i)
 		sum += a[i][1];
+	if (tot_len != null) print("GS", tot_len);
 	print("SZ", sum);
 	print("NN", a.length);
 	if (tot_len != null) sum = tot_len;
