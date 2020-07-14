@@ -103,10 +103,10 @@ function main(args) {
 			len += buf.length;
 		} else { // gfa or length line
 			var m, s = buf.toString();
-			if ((m = /^S\t(\S+)\t(([a-zA-Z]+)|\*).*\t(LN:i:(\d+))?/.exec(s)) != null) { // GFA S-line
-				if (m[5] != null || m[2] != '*') {
+			if ((m = /^S\t(\S+)\t([a-zA-Z]+)|(\*.*\tLN:i:(\d+))/.exec(s)) != null) { // GFA S-line
+				if (m[4] != null || m[2] != null) {
 					is_gfa = true;
-					if (m[5] != null) a.push([m[1], parseInt(m[5])]);
+					if (m[4] != null) a.push([m[1], parseInt(m[4])]);
 					else a.push([m[1], m[2].length]);
 				}
 			} else if (!is_gfa) {
