@@ -93,8 +93,8 @@ function main(args) {
 	var a = [];
 	while (file.readline(buf) >= 0) {
 		if (buf.length == 0) continue;
-		if (buf[0] == 62) { // fasta header
-			var m, s = buf.toString();
+		var m, s = buf.toString();
+		if (s[0] == ">") { // fasta header
 			if ((m = /^>(\S+)/.exec(s)) != null) {
 				if (name) a.push([name, len]);
 				is_fa = true, name = m[1], len = 0;
