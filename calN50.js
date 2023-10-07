@@ -93,16 +93,15 @@ function main(args) {
 	var a = [];
 	while (file.readline(buf) >= 0) {
 		if (buf.length == 0) continue;
-		if (buf[0] == 62) { // fasta header
-			var m, s = buf.toString();
+		var m, s = buf.toString();
+		if (s[0] == '>') { // fasta header
 			if ((m = /^>(\S+)/.exec(s)) != null) {
 				if (name) a.push([name, len]);
 				is_fa = true, name = m[1], len = 0;
 			}
 		} else if (is_fa) { // fasta sequence line
-			len += buf.length;
+			len += s.length;
 		} else { // gfa or length line
-			var m, s = buf.toString();
 			if ((m = /^S\t(\S+)\t([a-zA-Z]+)|(\*.*\tLN:i:(\d+))/.exec(s)) != null) { // GFA S-line
 				if (m[4] != null || m[2] != null) {
 					is_gfa = true;
